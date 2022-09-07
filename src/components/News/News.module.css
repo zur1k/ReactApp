@@ -1,0 +1,38 @@
+.News ul {
+   padding: 0;
+
+}
+
+.NewsItemTitle {
+   font-size: 30px;
+   font-weight: 900;
+   padding: 10px;
+   margin: 10px 0 0 0;
+}
+
+.NewsItemImg {
+   padding: 10px;
+   overflow: hidden;
+   text-align: center;
+}
+
+.NewsItemImg img {
+   max-width: 300px;
+   width: 100%;
+   max-height: 150px;
+   object-fit: cover;
+
+}
+
+.NewsItemText {
+   padding: 10px;
+   max-width: 600px;
+   font-weight: 200;
+
+}
+
+.NewsBlock {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}

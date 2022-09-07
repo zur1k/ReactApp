@@ -1,0 +1,45 @@
+.posts {
+   font-style: italic;
+   margin-top: 10px;
+}
+
+.MyPostsBlock {
+   padding: 10px;
+}
+
+.title {
+   font-size: 30px;
+   margin: 0 0 25px 0;
+}
+
+textarea {
+   width: 100%;
+   height: 70px;
+   padding: 12px 20px;
+   box-sizing: border-box;
+   border: 2px solid #ccc;
+   border-radius: 4px;
+   background-color: #f8f8f8;
+   font-size: 16px;
+   resize: none;
+   outline: none;
+   margin-bottom: 15px;
+}
+
+.btn {
+   margin-bottom: 25px;
+}
+
+.btn button {
+   border: none;
+   color: #ec5656;
+   background: #c4c4c4;
+   border-radius: 5px;
+   padding: 10px;
+   cursor: pointer;
+}
+
+.btn button:active {
+   background: #c4c4c481;
+
+}

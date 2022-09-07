@@ -1,0 +1,42 @@
+.trackItem {
+
+   background-color: #c4c4c4;
+   border-radius: 15px;
+   margin-bottom: 15px;
+   padding: 5px 10px;
+
+}
+
+.trackItem a {
+   font-size: 20px;
+   line-height: 2;
+   font-weight: 400;
+   color: yellow;
+   text-decoration: none;
+}
+
+.title {
+   margin: 15px 0 15px 0;
+   text-align: center;
+   font-size: 45px;
+
+}
+
+.trackItems {
+   padding: 0;
+   list-style-type: none;
+}
+
+.blockWrapper {
+   padding: 15px;
+}
+
+.btn {
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+}
+
+.btn+.btn {
+   margin-left: 1px;
+}
