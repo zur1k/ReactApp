@@ -1,3 +1,5 @@
+import { type } from "@testing-library/user-event/dist/type"
+
 export let store = {
    _callSubscribe() {
       console.log('state is changed!!!')
@@ -99,50 +101,83 @@ export let store = {
             }
          ]
       }
-   }
-   ,
+   },
    getState() {
       return this._state
    },
-   addPost() {
-      debugger
-      let NewPost = {
-         id: 3,
-         message: this._state.ProfilePage.newPostText,
-         likeCount: 0,
-         img: "https://img.lovepik.com/element/45001/3052.png_860.png"
-      }
-
-      this._state.ProfilePage.posts.push(NewPost)
-      this._state.ProfilePage.newPostText = ''
-      this._callSubscribe(this._state)
-   },
-   addMessage() {
-      let NewMessage = {
-         message: this._state.dialogsPage.newMessageText
-      }
-      this._state.dialogsPage.messageData.push(NewMessage)
-      this._state.dialogsPage.newMessageText = ''
-
-      this._callSubscribe(this._state)
-
-   },
-
-   // эти функци  обновляют текст в стейте 
-   updateNewPostText(NewText) {
-      this._state.ProfilePage.newPostText = NewText
-      this._callSubscribe(this._state)
-   },
-
-   updateNewMessageText(NewText) {
-      this._state.dialogsPage.newMessageText = NewText
-      console.log(this._state.dialogsPage.newMessageText = NewText)
-      this._callSubscribe(this._state)
-   }
-   ,
    subscribe(observer) {
       this._callSubscribe = observer /// patern observer  !!  addEventListener
-   }
+   },
+
+   dithpatch(action) {
+      if (action.type === "ADD-POST") {
+         let NewPost = {
+            id: 3,
+            message: this._state.ProfilePage.newPostText,
+            likeCount: 0,
+            img: "https://img.lovepik.com/element/45001/3052.png_860.png"
+         }
+
+         this._state.ProfilePage.posts.push(NewPost)
+         this._state.ProfilePage.newPostText = ''
+         this._callSubscribe(this._state)
+      }
+      else if (action.type === 'ADD-MESSAGE') {
+         let NewMessage = {
+            message: this._state.dialogsPage.newMessageText
+         }
+         this._state.dialogsPage.messageData.push(NewMessage)
+         this._state.dialogsPage.newMessageText = ''
+
+         this._callSubscribe(this._state)
+      }
+      else if (action.type === "UPDATE-NEW-POST-TEXT") {
+
+         this._state.ProfilePage.newPostText = action.NewText
+         this._callSubscribe(this._state)
+      }
+      else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+         debugger
+         this._state.dialogsPage.newMessageText = action.NewText
+         console.log(this._state.dialogsPage.newMessageText = action.NewText)
+         this._callSubscribe(this._state)
+      }
+   },
+
 }
 
 
+
+// addPost() {
+
+//    let NewPost = {
+//       id: 3,
+//       message: this._state.ProfilePage.newPostText,
+//       likeCount: 0,
+//       img: "https://img.lovepik.com/element/45001/3052.png_860.png"
+//    }
+
+//    this._state.ProfilePage.posts.push(NewPost)
+//    this._state.ProfilePage.newPostText = ''
+//    this._callSubscribe(this._state)
+// },
+// addMessage() {
+//    let NewMessage = {
+//       message: this._state.dialogsPage.newMessageText
+//    }
+//    this._state.dialogsPage.messageData.push(NewMessage)
+//    this._state.dialogsPage.newMessageText = ''
+
+//    this._callSubscribe(this._state)
+
+// },
+
+// updateNewPostText(NewText) {
+//    this._state.ProfilePage.newPostText = NewText
+//    this._callSubscribe(this._state)
+// },
+// updateNewMessageText(NewText) {
+//    this._state.dialogsPage.newMessageText = NewText
+//    console.log(this._state.dialogsPage.newMessageText = NewText)
+//    this._callSubscribe(this._state)
+// },

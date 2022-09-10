@@ -15,8 +15,9 @@ const Profile = (props) => {
             newPostText={props.profilePage.newPostText}
             btn="Send message"
             title="My Posts"
-            addPost={props.addPost}
-            updateNewPostText={props.updateNewPostText}
+            dithpatch={props.dithpatch}
+         // addPost={props.addPost}
+         // updateNewPostText={props.updateNewPostText}
          />
       </div>
    )

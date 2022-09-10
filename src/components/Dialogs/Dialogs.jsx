@@ -12,14 +12,18 @@ let Dialogs = (props) => {
 
    let AddNewMessage = () => {
 
-      props.addMessage()
+      // props.addMessage()
+      props.dithpatch({ type: 'ADD-MESSAGE' })
+
 
    }
 
    let onMessageChange = () => {
 
       let text = NewMessageElement.current.value
-      props.updateNewMessageText(text)
+      // props.updateNewMessageText(text)
+      props.dithpatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', NewText: text })
+
 
    }
 
