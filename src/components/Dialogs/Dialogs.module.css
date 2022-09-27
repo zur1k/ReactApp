@@ -2,10 +2,11 @@
    display: grid;
    grid-template-columns: 2fr 10fr;
    padding: 10px;
+   gap: 50px;
 }
 
 .dialogAvatar {
-   width: 100px;
+   width: 30px;
    border-radius: 50%;
 }
 
@@ -21,4 +22,42 @@
    align-items: center;
    border: 1px solid red;
    padding: 10px;
+}
+
+.btn {
+   margin-bottom: 25px;
+}
+
+.btn button {
+   border: none;
+   color: #ec5656;
+   background: #c4c4c4;
+   border-radius: 5px;
+   padding: 10px;
+   cursor: pointer;
+}
+
+.btn button:active {
+   background: #c4c4c481;
+
+}
+
+.textareaForm {
+   display: flex;
+   flex-direction: column;
+   row-gap: 30px;
+}
+
+.messageWrapper {
+   display: flex;
+   flex-direction: column;
+   row-gap: 30px;
+}
+
+.messages {
+   background: #f8f8f8;
+   border-radius: 4px;
+   padding: 10px;
+   height: 180px;
+   overflow-y: scroll;
 }

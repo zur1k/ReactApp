@@ -1,5 +1,14 @@
-import { type } from "@testing-library/user-event/dist/type"
+import dialogReducer from "./Dialog-reducer"
+import musicReducer from "./Music-reducer"
+import profileReducer from "./Profile-reducer"
+import navBarReducer from "./Navbar-reducer"
+import newsReducer from "./News-reducer"
+import settingsReducer from "./Setting-reducer"
 
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const ADD_MESSAGE = "ADD-MESSAGE"
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
 export let store = {
    _callSubscribe() {
       console.log('state is changed!!!')
@@ -27,22 +36,23 @@ export let store = {
       dialogsPage: {
 
          messageData: [
-            { message: "Hallo Guten Tag" },
-            { message: "Wie geht's dir?" },
-            { message: "Mir geht's gut" },
-            { message: "Wo wonhst du?" }
+            { id: 1, message: "Hallo Guten Tag" },
+            { id: 1, message: "Wie geht's dir?" },
+            { id: 1, message: "Mir geht's gut" },
+            { id: 1, message: "Wo wonhst du?" }
+
          ],
 
          dialogData: [
             { id: 1, name: "Zaur", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
             { id: 2, name: "Dima", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
-            { id: 3, name: "Lusia", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
+            { id: 3, name: "Lola", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
             { id: 4, name: "Lena", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
-            { id: 5, name: "Sobacyuga", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
+            { id: 5, name: "Kira", img: "https://img.lovepik.com/element/45001/3052.png_860.png" },
             { id: 6, name: "Bonya", img: "https://img.lovepik.com/element/45001/3052.png_860.png" }
          ],
 
-         newMessageText: "asadadd text"
+         newMessageText: ""
       },
       MusicPage: {
 
@@ -91,15 +101,18 @@ export let store = {
 
          friends: [
             {
-               name: "Lusia", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
+               name: "Lola", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
             },
             {
-               name: "Dimos", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
+               name: "Kira", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
             },
             {
-               name: "Sobacyuga", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
+               name: "Eva", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKMvO4ydq3DuBwMUTliFGqGm641axT0vrKaQ&usqp=CAU"
             }
          ]
+      },
+      settingPage: {
+
       }
    },
    getState() {
@@ -110,74 +123,36 @@ export let store = {
    },
 
    dithpatch(action) {
-      if (action.type === "ADD-POST") {
-         let NewPost = {
-            id: 3,
-            message: this._state.ProfilePage.newPostText,
-            likeCount: 0,
-            img: "https://img.lovepik.com/element/45001/3052.png_860.png"
-         }
+      this._state.ProfilePage = profileReducer(this._state.ProfilePage, action)
+      this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+      this._state.MusicPage = musicReducer(this._state.MusicPage, action)
+      this._state.sidebar = navBarReducer(this._state.sidebar, action)
+      this._state.NewsPage = newsReducer(this._state.NewsPage, action)
+      this._state.settingPage = settingsReducer(this._state.settingPage, action)
 
-         this._state.ProfilePage.posts.push(NewPost)
-         this._state.ProfilePage.newPostText = ''
-         this._callSubscribe(this._state)
-      }
-      else if (action.type === 'ADD-MESSAGE') {
-         let NewMessage = {
-            message: this._state.dialogsPage.newMessageText
-         }
-         this._state.dialogsPage.messageData.push(NewMessage)
-         this._state.dialogsPage.newMessageText = ''
-
-         this._callSubscribe(this._state)
-      }
-      else if (action.type === "UPDATE-NEW-POST-TEXT") {
-
-         this._state.ProfilePage.newPostText = action.NewText
-         this._callSubscribe(this._state)
-      }
-      else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
-         debugger
-         this._state.dialogsPage.newMessageText = action.NewText
-         console.log(this._state.dialogsPage.newMessageText = action.NewText)
-         this._callSubscribe(this._state)
-      }
+      this._callSubscribe(this._state)
    },
 
 }
+export const addPostActionCreator = () => {
+   return {
+      type: ADD_POST
+   }
+}
+export const updateNewPostTextActionCreator = (text) => {
+   return {
+      type: UPDATE_NEW_POST_TEXT, NewText: text
+   }
+}
+export const addMessageActionCreator = () => {
+   return {
+      type: ADD_MESSAGE
+   }
+}
+export const updateNewMessageTextActionCreator = (text) => {
+   return {
+      type: UPDATE_NEW_MESSAGE_TEXT, NewText: text
+   }
+}
 
 
-
-// addPost() {
-
-//    let NewPost = {
-//       id: 3,
-//       message: this._state.ProfilePage.newPostText,
-//       likeCount: 0,
-//       img: "https://img.lovepik.com/element/45001/3052.png_860.png"
-//    }
-
-//    this._state.ProfilePage.posts.push(NewPost)
-//    this._state.ProfilePage.newPostText = ''
-//    this._callSubscribe(this._state)
-// },
-// addMessage() {
-//    let NewMessage = {
-//       message: this._state.dialogsPage.newMessageText
-//    }
-//    this._state.dialogsPage.messageData.push(NewMessage)
-//    this._state.dialogsPage.newMessageText = ''
-
-//    this._callSubscribe(this._state)
-
-// },
-
-// updateNewPostText(NewText) {
-//    this._state.ProfilePage.newPostText = NewText
-//    this._callSubscribe(this._state)
-// },
-// updateNewMessageText(NewText) {
-//    this._state.dialogsPage.newMessageText = NewText
-//    console.log(this._state.dialogsPage.newMessageText = NewText)
-//    this._callSubscribe(this._state)
-// },
