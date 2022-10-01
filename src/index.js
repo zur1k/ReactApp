@@ -1,5 +1,5 @@
 import reportWebVitals from './reportWebVitals';
-import { store } from './redux/state';
+import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -17,20 +17,17 @@ let rerenderEntireTree = (state) => {
          < App
 
             state={state}
-            dithpatch={store.dithpatch.bind(store)}
-         // addPost={store.addPost.bind(store)}
-         // updateNewPostText={store.updateNewPostText.bind(store)}
-         // addMessage={store.addMessage.bind(store)}
-         // updateNewMessageText={store.updateNewMessageText.bind(store)}
+            dispatch={store.dispatch.bind(store)}
          />
       </BrowserRouter>
    );
 }
 rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree)
-
-reportWebVitals();
+store.subscribe(() => {
+   let state = store.getState();
+   rerenderEntireTree(state)
+})
 
 
 

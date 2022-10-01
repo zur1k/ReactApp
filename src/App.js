@@ -16,7 +16,7 @@ const App = (props) => {
 
     <div className='app-wrapper'>
       <Header />
-      <Navbar state={props.state.sidebar} />
+      <Navbar state={props.state.NavBar} />
       <div className='app-wrapper-content'>
 
         <Routes>
@@ -24,18 +24,18 @@ const App = (props) => {
             element={<Dialogs
               state={props.state.dialogsPage}
               newMewssageText={props.state.newPostText}
-              dithpatch={props.dithpatch} />} />
+              dispatch={props.dispatch} />} />
 
           <Route path="/Dialogs/*"
             element={<Dialogs
               state={props.state.dialogsPage}
               newMewssageText={props.state.newPostText}
-              dithpatch={props.dithpatch} />} />
+              dispatch={props.dispatch} />} />
 
           <Route path="/Profile"
             element={<Profile
               profilePage={props.state.ProfilePage}
-              dithpatch={props.dithpatch} />} />
+              dispatch={props.dispatch} />} />
 
           <Route path="/News"
             element={<News

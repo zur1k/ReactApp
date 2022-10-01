@@ -5,10 +5,7 @@ import navBarReducer from "./Navbar-reducer"
 import newsReducer from "./News-reducer"
 import settingsReducer from "./Setting-reducer"
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
-const ADD_MESSAGE = "ADD-MESSAGE"
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
+
 export let store = {
    _callSubscribe() {
       console.log('state is changed!!!')
@@ -89,7 +86,7 @@ export let store = {
          ]
       },
 
-      sidebar: {
+      NavBar: {
 
          navigation: [
             { navItem: "Profile", },
@@ -126,33 +123,13 @@ export let store = {
       this._state.ProfilePage = profileReducer(this._state.ProfilePage, action)
       this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
       this._state.MusicPage = musicReducer(this._state.MusicPage, action)
-      this._state.sidebar = navBarReducer(this._state.sidebar, action)
+      this._state.NavBar = navBarReducer(this._state.NavBar, action)
       this._state.NewsPage = newsReducer(this._state.NewsPage, action)
       this._state.settingPage = settingsReducer(this._state.settingPage, action)
 
       this._callSubscribe(this._state)
    },
 
-}
-export const addPostActionCreator = () => {
-   return {
-      type: ADD_POST
-   }
-}
-export const updateNewPostTextActionCreator = (text) => {
-   return {
-      type: UPDATE_NEW_POST_TEXT, NewText: text
-   }
-}
-export const addMessageActionCreator = () => {
-   return {
-      type: ADD_MESSAGE
-   }
-}
-export const updateNewMessageTextActionCreator = (text) => {
-   return {
-      type: UPDATE_NEW_MESSAGE_TEXT, NewText: text
-   }
 }
 
 
