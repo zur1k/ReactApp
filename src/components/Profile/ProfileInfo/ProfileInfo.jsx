@@ -3,6 +3,7 @@ import Description from './description/description';
 import s from './ProfileInfo.module.css'
 
 const ProfileInfo = (props) => {
+   debugger
    return (
 
       <div className={s.mainBlock}>

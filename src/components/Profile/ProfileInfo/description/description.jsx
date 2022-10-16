@@ -3,6 +3,7 @@ import s from './../ProfileInfo.module.css'
 
 
 const Description = (props) => {
+
    return (
       <div className={s.descriptionBlock}>
          <div className={s.Avatar}>
