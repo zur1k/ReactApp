@@ -8,29 +8,23 @@ import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../.
 
 
 let Dialogs = (props) => {
+   let state = props.DialogsPage
 
    let NewMessageElement = React.createRef()
 
+   let dialogElements = state.dialogData.map(d => (<DialogItem name={d.name} id={d.id} img={d.img} />))
+
+   let messageElements = state.messageData.map((m) => <Message message={m.message} test={'test'} />)
+
    let AddNewMessage = () => {
-
-      // props.addMessage()
-      props.dispatch(addMessageActionCreator())
-      debugger
-
+      props.addMessage()
    }
 
-   let onMessageChange = () => {
-
-      let text = NewMessageElement.current.value
-      // props.updateNewMessageText(text)
-      props.dispatch(updateNewMessageTextActionCreator(text))
-
-
+   let onMessageChange = (e) => {
+      let body = e.target.value
+      props.updateNewMessageBody(body)
    }
 
-   let dialogElements = props.state.dialogData.map(d => (<DialogItem name={d.name} id={d.id} img={d.img} />))
-
-   let messageElements = props.state.messageData.map((m) => <Message message={m.message} test={'test'} />)
 
 
    return (
@@ -48,7 +42,7 @@ let Dialogs = (props) => {
             <div className={s.textareaForm}>
                <textarea
                   onChange={onMessageChange}
-                  value={props.state.newMessageText}
+                  value={state.newMessageText}
                   ref={NewMessageElement}
                   placeholder="Enter your message bitch !!"
                />

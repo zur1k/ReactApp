@@ -7,6 +7,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Routes, Route } from "react-router-dom"
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 const App = (props) => {
 
@@ -21,21 +22,18 @@ const App = (props) => {
 
         <Routes>
           <Route path="/Dialogs/*"
-            element={<Dialogs
-              state={props.state.dialogsPage}
-              newMewssageText={props.state.newPostText}
-              dispatch={props.dispatch} />} />
+            element={<DialogsContainer
+              store={props.store}
+            // state={props.state.DialogsPage}
+            // newMewssageText={props.state.newPostText}
+            // dispatch={props.dispatch} 
 
-          <Route path="/Dialogs/*"
-            element={<Dialogs
-              state={props.state.dialogsPage}
-              newMewssageText={props.state.newPostText}
-              dispatch={props.dispatch} />} />
+            />} />
 
           <Route path="/Profile"
             element={<Profile
-              profilePage={props.state.ProfilePage}
-              dispatch={props.dispatch} />} />
+              store={props.store}
+            />} />
 
           <Route path="/News"
             element={<News

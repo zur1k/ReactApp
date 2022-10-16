@@ -30,7 +30,7 @@ export let store = {
          }
       },
 
-      dialogsPage: {
+      DialogsPage: {
 
          messageData: [
             { id: 1, message: "Hallo Guten Tag" },
@@ -119,9 +119,9 @@ export let store = {
       this._callSubscribe = observer /// patern observer  !!  addEventListener
    },
 
-   dithpatch(action) {
+   dispatch(action) {
       this._state.ProfilePage = profileReducer(this._state.ProfilePage, action)
-      this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+      this._state.DialogsPage = dialogReducer(this._state.DialogsPage, action)
       this._state.MusicPage = musicReducer(this._state.MusicPage, action)
       this._state.NavBar = navBarReducer(this._state.NavBar, action)
       this._state.NewsPage = newsReducer(this._state.NewsPage, action)

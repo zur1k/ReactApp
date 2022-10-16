@@ -8,7 +8,7 @@ import settingsReducer from "./Setting-reducer";
 
 let reducers = combineReducers({
    ProfilePage: profileReducer,
-   dialogsPage: dialogReducer,
+   DialogsPage: dialogReducer,
    MusicPage: musicReducer,
    NewsPage: newsReducer,
    NavBar: navBarReducer,
