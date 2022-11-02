@@ -7,13 +7,13 @@ const Description = (props) => {
    return (
       <div className={s.descriptionBlock}>
          <div className={s.Avatar}>
-            <img src={props.profileInfo.avatar} alt="avatar" />
+            <img src={props.ProfileInfo.avatar} alt="avatar" />
          </div>
          <div className={s.descriptionInfo}>
-            <div>{props.profileInfo.name}</div>
-            <div>{props.profileInfo.age}</div>
-            <div>{props.profileInfo.status}</div>
-            <div>{props.profileInfo.country}</div>
+            <div>{props.ProfileInfo.name}</div>
+            <div>{props.ProfileInfo.age}</div>
+            <div>{props.ProfileInfo.status}</div>
+            <div>{props.ProfileInfo.country}</div>
 
          </div >
       </div>

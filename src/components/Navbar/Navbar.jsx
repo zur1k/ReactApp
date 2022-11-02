@@ -6,10 +6,11 @@ import Friend from './friends/friend';
 
 
 const Navbar = (props) => {
+
    const ActiveLink = ({ isActive }) => isActive ? `${s.active}` : '';
 
-   let friendsElement = props.state.friends.map(el => <Friend name={el.name} img={el.img} />)
-   let navElements = props.state.navigation.map(el => <div className={s.navItem} >
+   let friendsElement = props.NavBar.friends.map(el => <Friend name={el.name} img={el.img} />)
+   let navElements = props.NavBar.navigation.map(el => <div className={s.navItem} >
       <NavLink className={ActiveLink} to={`/${el.navItem}`} >{el.navItem}</NavLink>
 
    </div >)
@@ -23,7 +24,6 @@ const Navbar = (props) => {
             <h3 className={s.ourFriendsTitle}>Friends</h3>
             <div className={s.friendsItems}>
                {friendsElement}
-
             </div>
          </div>
 

@@ -8,7 +8,7 @@ import s from './Settings.module.css'
 const Settings = () => {
    return (
       <div className={s.settingsWrapper}>
-         <form>
+         <form className={s.settingsForm}>
             <div>
                <label for="firstname">Your name</label>
                <input type="text" id="firstname" name="firstname" />

@@ -7,9 +7,7 @@ import Track from './Track/Track'
 const Music = (props) => {
 
 
-
-
-   let Tracks = props.state.trackData.map(el => <Track track={el.track} trackTime={el.trackTime} />)
+   let Tracks = props.trackData.map(el => <Track track={el.track} trackTime={el.trackTime} />)
 
    return (
       <div className={s.blockWrapper}>
